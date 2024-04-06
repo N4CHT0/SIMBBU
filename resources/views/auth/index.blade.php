@@ -75,6 +75,10 @@
                         <!-- Pilihan role sesuai dengan kebutuhan -->
                         <option value="peserta">Peserta</option>
                         <option value="peserta_ujian">Peserta Ujian</option>
+                        <option value="admin">Admin</option>
+                        <option value="pegawai">Pegawai</option>
+                        <option value="keuangan">Keuangan</option>
+                        <option value="pengajar">Pengajar</option>
                         <!-- Tambahkan pilihan lain jika diperlukan -->
                     </select>
                 </div>
@@ -104,31 +108,26 @@
                 <!-- Sesuaikan dengan kolom-kolom yang ingin ditambahkan -->
                 <div class="form-group">
                     <label for="username">Username : </label>
-                    <span id="username_detail"></span>
+                    <span class="detail-value" id="username_detail"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="role">Role : </label>
-                    <span id="role_detail"></span>
+                    <span class="detail-value" id="role_detail"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="created_at">Data Masuk : </label>
-                    <span id="created_at_detail"></span>
+                    <span class="detail-value" id="created_at_detail"></span>
                 </div>
                 <div class="form-group">
                     <label for="updated_at">Terakhir Data Ubah : </label>
-                    <span id="updated_at_detail"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password : </label>
-                    <span id="password_detail"></span>
+                    <span class="detail-value" id="updated_at_detail"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email : </label>
-                    <span id="email_detail"></span>
+                    <span class="detail-value" id="email_detail"></span>
                 </div>
 
             </div>
@@ -199,19 +198,24 @@
     /* Proses Detail */
     $('body').on('click', '.tombol-detail', function (e) {
         var id = $(this).data('id');
-
+        console.log("Clicked ID:", id);
         $.ajax({
             url: 'UsersAjax/' + id,
             type: 'GET',
             success: function (response) {
-                $('#Detail').modal('show');
-                $('#username_detail').text(response.result.username);
-                $('#password_detail').text(response.result.password);
-                $('#role_detail').text(response.result.role);
-                $('#created_at_detail').text(response.result.created_at);
-                $('#updated_at_detail').text(response.result.updated_at);
-                $('#email_detail').text(response.result.email);
-                console.log(response.result);
+                console.log("Response:", response);
+                if (response.hasOwnProperty('error')) {
+                    console.error("Data not found");
+                } else {
+                    var result = response.result;
+                    $('#Detail').modal('show');
+                    $('.detail-value#username_detail').text(result.username);
+                    $('.detail-value#email_detail').text(result.email);
+                    $('.detail-value#role_detail').text(result.role);
+                    $('.detail-value#role_detail').text(result.role);
+                    $('.detail-value#created_at_detail').text(result.created_at);
+                    $('.detail-value#updated_at_detail').text(result.updated_at);
+                }
             }
         });
     });

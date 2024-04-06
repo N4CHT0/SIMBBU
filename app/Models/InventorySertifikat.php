@@ -14,9 +14,14 @@ class InventorySertifikat extends Model
     public $incrementing = false;
     protected $fillable = [
         'id',
-        'nama_mata_kuliah',
-        'jenis_diklat',
-        'id_pengajar',
+        'jenis_sertifikat',
+        'nama_pemilik',
+        'no_sertifikat',
+        'status_sertifikat',
+        'foto_sertifikat',
+        'bukti_pengambilan',
+        'bukti_pengiriman',
+        'email',
     ];
     protected static function boot()
     {

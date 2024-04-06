@@ -50,7 +50,6 @@ class AdminController extends Controller
             'role' => 'required',
         ],[
             'username.required' => 'Nama Lengkap Wajib Di Isi',
-            'nip.required' => 'NIP Wajib Di Isi',
             'email.email' => 'Format Email Harus Benar',
             'email.required' => 'Email Wajib Di Isi',
             'role.required' => 'Role Wajib Di Isi',
@@ -65,6 +64,7 @@ class AdminController extends Controller
                 'role' => $request->role,
                 'email' => $request->email,
             ];
+
             User::create($data);
             return response()->json(['success' => "Berhasil Menyimpan Data" ]);
         }
@@ -76,7 +76,12 @@ class AdminController extends Controller
     public function show(string $id)
     {
         $data = User::where('id', $id)->first();
-        return response()->json(['result'=>$data]);
+
+        if (!$data) {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
+
+        return response()->json(['result' => $data]);
     }
 
     /**
@@ -100,7 +105,6 @@ class AdminController extends Controller
             'role' => 'required',
         ],[
             'username.required' => 'Nama Lengkap Wajib Di Isi',
-            'nip.required' => 'NIP Wajib Di Isi',
             'email.email' => 'Format Email Harus Benar',
             'email.required' => 'Email Wajib Di Isi',
             'role.required' => 'Role Wajib Di Isi',

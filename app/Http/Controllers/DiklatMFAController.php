@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DiklatMEFA;
+use App\Models\DiklatMFA;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-class DiklatMEFAController extends Controller
+class DiklatMFAController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = DiklatMEFA::orderBy('nama_lengkap', 'asc');
+        $data = DiklatMFA::orderBy('nama_lengkap', 'asc');
         return DataTables::of($data)
         ->addIndexColumn()
         ->addColumn('action', function($data){
-            return view('diklat_mc.button',compact('data'));
+            return view('diklat_mfa.button',compact('data'));
         })
         ->make(true);
     }
@@ -118,7 +118,7 @@ class DiklatMEFAController extends Controller
             $data['foto'] = $fotoName;
         }
 
-        DiklatMEFA::create($data);
+        DiklatMFA::create($data);
         return response()->json(['success' => "Berhasil Menyimpan Data"]);
     }
 
@@ -127,7 +127,7 @@ class DiklatMEFAController extends Controller
      */
     public function show(string $id)
     {
-        $data = DiklatMEFA::where('id', $id)->first();
+        $data = DiklatMFA::where('id', $id)->first();
         return response()->json(['result'=>$data]);
     }
 
@@ -136,7 +136,7 @@ class DiklatMEFAController extends Controller
      */
     public function edit(string $id)
     {
-        $data = DiklatMEFA::where('id', $id)->first();
+        $data = DiklatMFA::where('id', $id)->first();
         return response()->json(['result'=>$data]);
     }
 
@@ -149,7 +149,7 @@ class DiklatMEFAController extends Controller
 
         try {
             // Temukan data berdasarkan ID
-            $model = DiklatMEFA::findOrFail($id);
+            $model = DiklatMFA::findOrFail($id);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['errors' => ['Data tidak ditemukan']], 404);
         }
@@ -257,7 +257,7 @@ class DiklatMEFAController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = DiklatMEFA::find($id);
+        $data = DiklatMFA::find($id);
         if ($data) {
             // Hapus file terkait jika ada
             if ($data->foto) {

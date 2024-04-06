@@ -7,7 +7,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 class RegisterController extends Controller
 {
     /*
@@ -64,11 +65,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $uuid = Uuid::uuid4()->toString();
+
         return User::create([
+            'id' => $uuid,
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+    }
+
+    protected function authenticated(Request $request, $data)
+    {
+        // Check user role and redirect accordingly
+        if ($data->hasRole('admin')) {
+            return redirect()->route('admin.home');
+        }
+        if ($data->hasRole('peserta')) {
+            return redirect()->route('peserta.home');
+        }
+        if ($data->hasRole('keuangan')) {
+            return redirect()->route('keuangan.home');
+        }
+        if ($data->hasRole('pesertaujian')) {
+            return redirect()->route('peserta_ujian.home');
+        }
+        if ($data->hasRole('pegawai')) {
+            return redirect()->route('pegawai.home');
+        }
+        if ($data->hasRole('inventory')) {
+            return redirect()->route('inventory.home');
+        }
+        if ($data->hasRole('pengajar')) {
+            return redirect()->route('pengajar.home');
+        }
+
+        return redirect($this->redirectTo);
     }
 }

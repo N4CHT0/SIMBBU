@@ -4,4 +4,3 @@
     <a data-id="{{ $data->id}}" class="btn btn-danger tombol-hapus">Hapus</a>
     <a data-id="{{ $data->id}}" class="btn btn-secondary">Cetak</a>
 </div>
-

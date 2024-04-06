@@ -4,46 +4,41 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Data Diklat MEFA</h3>
+            <h3 class="card-title">Data Perpanjangan Sertifikat SOU</h3>
         </div>
 
         <div class="card-body">
             <div class="btn-group mb-3 justify-content-between">
                 <a href="#" class="btn btn-danger d-flex align-items-center">
-                    Export Data Diklat MEFA
+                    Export Data Perpanjangan Sertifikat SOU
                 </a>
 
                 <button type="button" class="btn btn-success ms-2 d-flex align-items-center tombol-tambah">
-                    Tambah Diklat MEFA
+                    Tambah Perpanjangan Sertifikat SOU
                 </button>
             </div>
             <br>
             <br>
-            <table id="DiklatMEFA" class="table table-bordered table-hover">
+            <table id="PerpanjanganSertifikatSOU" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Seafare Code</th>
+                        <th>No Sertifikat</th>
+                        <th>NIK</th>
+                        <th>NPWP</th>
                         <th>Nama Lengkap</th>
                         <th>Jenis Kelamin</th>
-                        <th>Jenis Sertifikat COP</th>
-                        <th>Pekerjaan</th>
-                        <th>Status</th>
+                        <th>Jenis Sertifikat</th>
                         <th>Alamat</th>
                         <th>Agama</th>
                         <th>Provinsi</th>
                         <th>Kabupaten/Kota</th>
                         <th>Kecamatan</th>
-                        <th>Kode Pos</th>
                         <th>Kelurahan/Desa</th>
-                        <th>RT/RW</th>
                         <th>Tanggal Lahir</th>
                         <th>Tempat Lahir</th>
                         <th>No Telp</th>
                         <th>Email</th>
-                        <th>Foto</th>
-                        <th>Nama Ibu</th>
-                        <th>Nama Ayah</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -53,11 +48,11 @@
 </div>
 
 <!-- Modal Tambah & Edit/Update -->
-<div class="modal fade" id="ModalMEFA" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalPerpanjanganSertifikatSOU" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel">Data Diklat MEFA</h5>
+                <h5 class="modal-title" id="ModalLabel">Data Perpanjangan Sertifikat SOU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -69,8 +64,18 @@
                 <!-- Sesuaikan dengan kolom-kolom yang ingin ditambahkan -->
 
                 <div class="form-group">
-                    <label for="seafare_code">Seafare Code</label>
-                    <input type="text" class="form-control" id="seafare_code" name="seafare_code" required>
+                    <label for="no_sertifikat">No Sertifikat</label>
+                    <input type="text" class="form-control" id="no_sertifikat" name="no_sertifikat" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" class="form-control" id="nik" name="nik" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="npwp">NPWP</label>
+                    <input type="text" class="form-control" id="npwp" name="npwp" required>
                 </div>
 
                 <div class="form-group">
@@ -95,8 +100,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="jenis_sertifikat_cop">Jenis Sertifikat COP</label>
-                    <input type="text" class="form-control" id="jenis_sertifikat_cop" name="jenis_sertifikat_cop"
+                    <label for="jenis_sertifikat">Jenis Sertifikat</label>
+                    <input type="text" class="form-control" id="jenis_sertifikat" name="jenis_sertifikat"
                         required>
                 </div>
 
@@ -108,7 +113,8 @@
 
                 <div class="form-group">
                     <label for="agama">Agama</label>
-                    <input type="text" class="form-control" id="agama" name="agama" required>
+                    <input type="text" class="form-control" id="agama" name="agama" autocomplete="street-address"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -132,38 +138,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="rt_rw">RT/RW</label>
-                    <input type="text" class="form-control" id="rt_rw" name="rt_rw" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="kode_pos">Kode Pos</label>
-                    <input type="text" class="form-control" id="kode_pos" name="kode_pos" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="pekerjaan">Pekerjaan</label>
-                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <input type="text" class="form-control" id="status" name="status" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nama_ibu">Nama Ibu</label>
-                    <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nama_ayah">Nama Ayah</label>
-                    <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" required>
-                </div>
-
-                <div class="form-group">
                     <label for="foto">Upload Foto</label>
                     <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_ijazah">Upload Scan/Foto Ijazah </label>
+                    <input type="file" class="form-control" id="scan_foto_ijazah" name="scan_foto_ijazah" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_sertifikat">Upload Scan/Foto Sertifikat</label>
+                    <input type="file" class="form-control" id="scan_foto_sertifikat" name="scan_foto_sertifikat" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_npwp">Upload Scan/Foto NPWP</label>
+                    <input type="file" class="form-control" id="scan_foto_npwp" name="scan_foto_npwp" accept="image/*" required>
                 </div>
 
                 <div class="form-group">
@@ -194,7 +185,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="DetailLabel">Data MEFA</h5>
+                <h5 class="modal-title" id="DetailLabel">Data Perpanjangan Sertifikat SOU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -207,8 +198,8 @@
                 <!-- Sesuaikan dengan kolom-kolom yang ingin ditambahkan -->
 
                 <div class="form-group">
-                    <label for="seafare_code">Seafare Code : </label>
-                    <span class="detail-value" id="seafare_code_detail"></span>
+                    <label for="no_sertifikat">No Sertifikat : </label>
+                    <span class="detail-value" id="no_sertifikat_detail"></span>
                 </div>
 
                 <div class="form-group">
@@ -217,13 +208,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="status">Status : </label>
-                    <span class="detail-value" id="status_detail"></span>
+                    <label for="nik">NIK : </label>
+                    <span class="detail-value" id="nik_detail"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="jenis_sertifikat_cop">Jenis Sertifikat COP : </label>
-                    <span class="detail-value" id="jenis_sertifikat_cop_detail"></span>
+                    <label for="npwp">NPWP : </label>
+                    <span class="detail-value" id="npwp_detail"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="jenis_diklat">Jenis Diklat : </label>
+                    <span class="detail-value" id="jenis_diklat_detail"></span>
                 </div>
 
                 <div class="form-group">
@@ -234,11 +230,6 @@
                 <div class="form-group">
                     <label for="agama">Agama : </label>
                     <span class="detail-value" id="agama_detail"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="pekerjaan">Pekerjaan : </label>
-                    <span class="detail-value" id="pekerjaan_detail"></span>
                 </div>
 
                 <div class="form-group">
@@ -262,16 +253,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="kode_pos">Kode Pos : </label>
-                    <span class="detail-value" id="kode_pos_detail"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="rt_rw">RT/RW : </label>
-                    <span class="detail-value" id="rt_rw_detail"></span>
-                </div>
-
-                <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir : </label>
                     <span class="detail-value" id="tempat_lahir_detail"></span>
                 </div>
@@ -292,19 +273,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nama_ibu">Nama Ibu : </label>
-                    <span class="detail-value" id="nama_ibu_detail"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="nama_ayah">Nama Ayah : </label>
-                    <span class="detail-value" id="nama_ayah_detail"></span>
-                </div>
-
-                <div class="form-group">
                     <label for="foto">Foto : </label>
                     <br>
                     <img class="detail-value" id="foto_detail" src="{{ asset('') }}" alt="Foto"
+                        style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_ijazah">Scan/Foto Ijazah : </label>
+                    <br>
+                    <img class="detail-value" id="scan_foto_ijazah_detail" src="{{ asset('') }}" alt="Foto"
+                        style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_sertifikat_bst">Scan/Foto Sertifikat : </label>
+                    <br>
+                    <img class="detail-value" id="scan_foto_sertifikat_detail" src="{{ asset('') }}" alt="Foto"
+                        style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_foto_npwp">Scan/Foto NPWP : </label>
+                    <br>
+                    <img class="detail-value" id="scan_foto_npwp_detail" src="{{ asset('') }}" alt="Foto"
                         style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
                 </div>
                 <!-- ... -->
@@ -323,8 +315,8 @@
     // Skrip JavaScript
     // ...
     $(function () {
-        $('#DiklatMEFA').DataTable({
-            "ajax": "{{ url('DiklatMEFAAjax') }}",
+        $('#PerpanjanganSertifikatSOU').DataTable({
+            "ajax": "{{ url('PerpanjanganSertifikatSOUAjax') }}",
             "columns": [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -332,8 +324,16 @@
                     searchable: false
                 },
                 {
-                    data: 'seafare_code',
-                    name: 'seafare_code'
+                    data: 'no_sertifikat',
+                    name: 'no_sertifikat'
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'npwp',
+                    name: 'npwp'
                 },
                 {
                     data: 'nama_lengkap',
@@ -344,16 +344,8 @@
                     name: 'jenis_kelamin'
                 },
                 {
-                    data: 'jenis_sertifikat_cop',
-                    name: 'jenis_sertifikat_cop'
-                },
-                {
-                    data: 'pekerjaan',
-                    name: 'pekerjaan'
-                },
-                {
-                    data: 'status',
-                    name: 'status'
+                    data: 'jenis_sertifikat',
+                    name: 'jenis_sertifikat'
                 },
                 {
                     data: 'alamat',
@@ -376,16 +368,8 @@
                     name: 'kecamatan'
                 },
                 {
-                    data: 'kode_pos',
-                    name: 'kode_pos'
-                },
-                {
                     data: 'kelurahan_desa',
                     name: 'kelurahan_desa'
-                },
-                {
-                    data: 'rt_rw',
-                    name: 'rt_rw'
                 },
                 {
                     data: 'tanggal_lahir',
@@ -402,18 +386,6 @@
                 {
                     data: 'email',
                     name: 'email'
-                },
-                {
-                    data: 'foto',
-                    name: 'foto'
-                },
-                {
-                    data: 'nama_ibu',
-                    name: 'nama_ibu'
-                },
-                {
-                    data: 'nama_ayah',
-                    name: 'nama_ayah'
                 },
                 {
                     data: 'action',
@@ -445,28 +417,24 @@
         var id = $(this).data('id');
 
         $.ajax({
-            url: 'DiklatMEFAAjax/' + id,
+            url: 'PerpanjanganSertifikatSOUAjax/' + id,
             type: 'GET',
             success: function (response) {
                 var result = response.result;
                 $('.detail-value#nama_lengkap_detail').text(result.nama_lengkap);
-                $('.detail-value#seafare_code_detail').text(result.seafare_code);
+                $('.detail-value#alamat_detail').text(result.alamat);
+                $('.detail-value#nik_detail').text(result.nik);
+                $('.detail-value#no_sertifikat_detail').text(result.seafare_code);
                 $('.detail-value#tempat_lahir_detail').text(result.tempat_lahir);
                 $('.detail-value#tanggal_lahir_detail').text(result.tanggal_lahir);
                 $('.detail-value#email_detail').text(result.email);
-                $('.detail-value#pekerjaan_detail').text(result.pekerjaan);
-                $('.detail-value#status_detail').text(result.status);
                 $('.detail-value#agama_detail').text(result.agama);
                 $('.detail-value#provinsi_detail').text(result.provinsi);
                 $('.detail-value#kabupaten_kota_detail').text(result.kabupaten_kota);
                 $('.detail-value#kelurahan_desa_detail').text(result.kelurahan_desa);
                 $('.detail-value#kecamatan_detail').text(result.kecamatan);
-                $('.detail-value#kode_pos_detail').text(result.kode_pos);
-                $('.detail-value#rt_rw_detail').text(result.rt_rw);
-                $('.detail-value#nama_ibu_detail').text(result.nama_ibu);
-                $('.detail-value#nama_ayah_detail').text(result.nama_ayah);
                 $('.detail-value#jenis_kelamin_detail').text(result.jenis_kelamin);
-                $('.detail-value#jenis_sertifikat_cop_detail').text(result.jenis_sertifikat_cop);
+                $('.detail-value#jenis_sertifikat_detail').text(result.jenis_sertifikat);
                 $('.detail-value#no_telp_detail').text(result.no_telp);
 
                 if (result.foto && result.foto !== null) {
@@ -479,6 +447,40 @@
                     // Atau sembunyikan elemen gambar sepenuhnya
                     $('.detail-value#foto_detail').hide();
                 }
+
+                if (result.scan_foto_ijazah && result.scan_foto_ijazah !== null) {
+                    // Pastikan ada foto sebelum mencoba menetapkan src
+                    $('.detail-value#scan_foto_ijazah_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.scan_foto_ijazah);
+                } else {
+                    // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
+                    // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
+                    // Atau sembunyikan elemen gambar sepenuhnya
+                    $('.detail-value#scan_foto_ijazah_detail').hide();
+                }
+
+                if (result.scan_foto_npwp && result.scan_foto_npwp !== null) {
+                    // Pastikan ada foto sebelum mencoba menetapkan src
+                    $('.detail-value#scan_foto_npwp_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.scan_foto_npwp);
+                } else {
+                    // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
+                    // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
+                    // Atau sembunyikan elemen gambar sepenuhnya
+                    $('.detail-value#scan_foto_npwp_detail').hide();
+                }
+
+                if (result.scan_foto_sertifikat && result.scan_foto_sertifikat !== null) {
+                    // Pastikan ada foto sebelum mencoba menetapkan src
+                    $('.detail-value#scan_foto_sertifikat_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.scan_foto_sertifikat);
+                } else {
+                    // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
+                    // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
+                    // Atau sembunyikan elemen gambar sepenuhnya
+                    $('.detail-value#scan_foto_sertifikat_detail').hide();
+                }
+
                 console.log(result);
                 $('#Detail').modal('show');
             },
@@ -491,7 +493,7 @@
     /* Proses Tambah */
     $('body').on('click', '.tombol-tambah', function (e) {
         e.preventDefault();
-        $('#ModalMEFA').modal('show');
+        $('#ModalPerpanjanganSertifikatSOU').modal('show');
         $('.tombol-simpan').on('click', function () {
             simpan();
         });
@@ -501,30 +503,29 @@
     $('body').on('click', '.tombol-edit', function (e) {
         var id = $(this).data('id');
         $.ajax({
-            url: 'DiklatMEFAAjax/' + id + '/edit',
+            url: 'PerpanjanganSertifikatSOUAjax/' + id + '/edit',
             type: 'GET',
             success: function (response) {
-                $('#ModalMEFA').modal('show');
+                $('#ModalPerpanjanganSertifikatSOU').modal('show');
                 $('#nama_lengkap').val(response.result.nama_lengkap);
-                $('#status').val(response.result.status);
+                $('#jenis_sertifikat').val(response.result.jenis_sertifikat);
+                $('#nik').val(response.result.nik);
                 $('#alamat').val(response.result.alamat);
-                $('#agama').val(response.result.agama);
-                $('#seafare_code').val(response.result.seafare_code);
+                $('#agama').val(response.result.alamat);
+                $('#npwp').val(response.result.npwp);
+                $('#no_sertifikat').val(response.result.no_sertifikat);
                 $('#provinsi').val(response.result.provinsi);
                 $('#kabupaten_kota').val(response.result.kabupaten_kota);
                 $('#kecamatan').val(response.result.kecamatan);
                 $('#kelurahan_desa').val(response.result.kelurahan_desa);
-                $('#rt_rw').val(response.result.rt_rw);
-                $('#kode_pos').val(response.result.kode_pos);
                 $('#tempat_lahir').val(response.result.tempat_lahir);
                 $('#tanggal_lahir').val(response.result.tanggal_lahir);
                 $('#email').val(response.result.email);
-                $('#pekerjaan').val(response.result.pekerjaan);
                 $('#foto').val('');
-                $('#nama_ibu').val(response.result.nama_ibu);
-                $('#nama_ayah').val(response.result.nama_ayah);
+                $('#scan_foto_npwp').val('');
+                $('#scan_foto_ijazah').val('');
+                $('#scan_foto_sertifikat').val('');
                 $('#jenis_kelamin').val(response.result.jenis_kelamin);
-                $('#jenis_sertifikat_cop').val(response.result.jenis_sertifikat_cop);
                 $('#no_telp').val(response.result.no_telp);
                 console.log(response.result);
                 $('.tombol-simpan').click(function () {
@@ -539,11 +540,11 @@
         if (confirm('Yakin Ingin Menghapus Data Ini?')) {
             var id = $(this).data('id');
             $.ajax({
-                url: 'DiklatMEFAAjax/' + id,
+                url: 'PerpanjanganSertifikatSOUAjax/' + id,
                 type: 'DELETE',
                 success: function (response) {
                     console.log(response);
-                    $('#DiklatMEFA').DataTable().ajax.reload();
+                    $('#PerpanjanganSertifikatSOU').DataTable().ajax.reload();
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
@@ -571,29 +572,40 @@
         // Mendapatkan data dari elemen HTML
         var data = new FormData();
         data.append('nama_lengkap', $('#nama_lengkap').val());
-        data.append('seafare_code', $('#seafare_code').val());
-        data.append('status', $('#status').val());
+        data.append('no_sertifikat', $('#no_sertifikat').val());
+        data.append('npwp', $('#npwp').val());
+        data.append('nik', $('#nik').val());
         data.append('agama', $('#agama').val());
-        data.append('pekerjaan', $('#pekerjaan').val());
         data.append('alamat', $('#alamat').val());
         data.append('provinsi', $('#provinsi').val());
         data.append('kecamatan', $('#kecamatan').val());
         data.append('kabupaten_kota', $('#kabupaten_kota').val());
         data.append('kelurahan_desa', $('#kelurahan_desa').val());
-        data.append('rt_rw', $('#rt_rw').val());
         data.append('no_telp', $('#no_telp').val());
         data.append('email', $('#email').val());
         data.append('jenis_kelamin', $('#jenis_kelamin').val());
-        data.append('jenis_sertifikat_cop', $('#jenis_sertifikat_cop').val());
+        data.append('jenis_sertifikat', $('#jenis_sertifikat').val());
         data.append('tempat_lahir', $('#tempat_lahir').val());
         data.append('tanggal_lahir', $('#tanggal_lahir').val());
-        data.append('nama_ibu', $('#nama_ibu').val());
-        data.append('nama_ayah', $('#nama_ayah').val());
-        data.append('kode_pos', $('#kode_pos').val());
 
         var fotoInput = $('#foto')[0];
         if (fotoInput.files.length > 0) {
             data.append('foto', fotoInput.files[0]);
+        }
+
+        var npwpInput = $('#scan_foto_npwp')[0];
+        if (npwpInput.files.length > 0) {
+            data.append('scan_foto_npwp', npwpInput.files[0]);
+        }
+
+        var sertifikatInput = $('#scan_foto_sertifikat')[0];
+        if (sertifikatInput.files.length > 0) {
+            data.append('scan_foto_sertifikat', sertifikatInput.files[0]);
+        }
+
+        var ijazahInput = $('#scan_foto_ijazah')[0];
+        if (ijazahInput.files.length > 0) {
+            data.append('scan_foto_ijazah', ijazahInput.files[0]);
         }
 
         // Tambahkan atribut _method untuk permintaan PUT (update)
@@ -615,7 +627,7 @@
 
         // Kirim permintaan
         $.ajax({
-            url: id === '' ? 'DiklatMEFAAjax' : 'DiklatMEFAAjax/' + id,
+            url: id === '' ? 'PerpanjanganSertifikatSOUAjax' : 'PerpanjanganSertifikatSOUAjax/' + id,
             type: methodType,
             data: data,
             contentType: false,
@@ -633,7 +645,7 @@
                     $('.alert-success').removeClass('d-none');
                     $('.alert-success').html(response.success);
                 }
-                $('#DiklatMEFA').DataTable().ajax.reload();
+                $('#PerpanjanganSertifikatSOU').DataTable().ajax.reload();
             },
             error: function (xhr, textStatus, errorThrown) {
                 if (xhr.status === 422) {
@@ -651,29 +663,25 @@
 
 
 
-    $('#ModalMEFA').on('hidden.bs.modal', function () {
+    $('#ModalPerpanjanganSertifikatSOU').on('hidden.bs.modal', function () {
         var inputFoto = $('#foto');
         inputFoto.replaceWith(inputFoto.val('').clone(true));
         $('#nama_lengkap').val('');
         $('#status').val('');
-        $('#seafare_code').val('');
-        $('#pekerjaan').val('');
+        $('#nik').val('');
+        $('#npwp').val('');
+        $('#no_sertifikat').val('');
         $('#jenis_kelamin').val('');
-        $('#jenis_sertifikat_cop').val('');
+        $('#jenis_sertifikat').val('');
         $('#alamat').val('');
         $('#agama').val('');
         $('#provinsi').val('');
         $('#kecamatan').val('');
         $('#kabupaten_kota').val('');
         $('#kelurahan_desa').val('');
-        $('#rt_rw').val('');
-        $('#kode_pos').val('');
-        $('#nama_ibu').val('');
-        $('#nama_ayah').val('');
         $('#email').val('');
         $('#tempat_lahir').val('');
         $('#tanggal_lahir').val('');
-        $('#email').val('');
         $('#no_telp').val('');
         $('.alert-danger').addClass('d-none');
         $('.alert-danger').html('');

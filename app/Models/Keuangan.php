@@ -17,6 +17,7 @@ class Keuangan extends Model
         'id_user',
         'jenis_diklat',
         'status_pembayaran',
+        'bukti_pembayaran',
     ];
     protected static function boot()
     {

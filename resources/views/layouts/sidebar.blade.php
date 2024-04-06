@@ -3,9 +3,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('LTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('LTE/dist/img/LOGO_SIM-removebg-preview.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SIM-BBU</span>
+                <span class="brand-text font-weight-bold">SIM-BBU</span>
             </a>
 
             <!-- Sidebar -->
@@ -154,6 +154,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('sertifikat_mcu.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    SERTIFIKAT MCU
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
@@ -203,9 +211,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('diklat_mefa.index') }}" class="nav-link">
+                                    <a href="{{ route('diklat_mfa.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>MEFA</p>
+                                        <p>MFA</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -228,6 +236,29 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    PERPANJANGAN
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('perpanjangan_sertifikat_gmdss.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SERTIFIKAT GMDSS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('perpanjangan_sertifikat_sou.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SERTIFIKAT SOU</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-header">PEGAWAI</li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
@@ -236,7 +267,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('nilai_ujian_lokal.index') }}" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Nilai Ujian Lokal</p>
                             </a>
@@ -255,7 +286,7 @@
                         </li>
                         <li class="nav-header">INVENTORY</li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('inventory_sertifikat.index') }}" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Sertifikat</p>
                             </a>
@@ -270,12 +301,6 @@
                             <a href="" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Prasarana</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>Kinerja</p>
                             </a>
                         </li>
                         <li class="nav-header">ADMINISTRATOR</li>
@@ -314,9 +339,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('LTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('LTE/dist/img/LOGO_SIM-removebg-preview.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SIM-BBU</span>
+                <span class="brand-text font-weight-bold">SIM-BBU</span>
             </a>
 
             <!-- Sidebar -->
@@ -514,9 +539,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('diklat_mefa.index') }}" class="nav-link">
+                                    <a href="{{ route('diklat_mfa.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>MEFA</p>
+                                        <p>MFA</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

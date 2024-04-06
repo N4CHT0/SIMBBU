@@ -47,6 +47,21 @@ class LoginController extends Controller
         if ($user->hasRole('peserta')) {
             return redirect()->route('peserta.home');
         }
+        if ($user->hasRole('keuangan')) {
+            return redirect()->route('keuangan.home');
+        }
+        if ($user->hasRole('pegawai')) {
+            return redirect()->route('k.home');
+        }
+        if ($user->hasRole('pesertaujian')) {
+            return redirect()->route('peserta_ujian.home');
+        }
+        if ($user->hasRole('inventory')) {
+            return redirect()->route('inventory.home');
+        }
+        if ($user->hasRole('pengajar')) {
+            return redirect()->route('pengajar.home');
+        }
 
         return redirect($this->redirectTo);
     }

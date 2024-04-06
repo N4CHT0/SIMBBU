@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PerpanjanganSertifikatGMDSS;
+use App\Models\PerpanjanganSertifikatSOU;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-class PerpanjanganSertifikatGMDSSController extends Controller
+class PerpanjanganSertifikatSOUController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = PerpanjanganSertifikatGMDSS::orderBy('nama_lengkap', 'asc');
+        $data = PerpanjanganSertifikatSOU::orderBy('nama_lengkap', 'asc');
         return DataTables::of($data)
         ->addIndexColumn()
         ->addColumn('action', function($data){
-            return view('perpanjangan_sertifikat_gmdss.button',compact('data'));
+            return view('perpanjangan_sertifikat_sou.button',compact('data'));
         })
         ->make(true);
     }
@@ -39,31 +39,24 @@ class PerpanjanganSertifikatGMDSSController extends Controller
         $validasi = validator::make($request->all(), [
             'nama_lengkap' => 'required',
             'email' => 'required',
-            'diklat_asal' => 'required',
-            'status' => 'required',
-            'seafare_code' => 'required',
+            'jenis_sertifikat' => 'required',
+            'no_sertifikat' => 'required',
             'no_telp' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'nik' => 'required',
+            'npwp' => 'required',
             'jenis_kelamin' => 'required',
             'provinsi' => 'required',
             'kabupaten_kota' => 'required',
-            'pekerjaan' => 'required',
             'kecamatan' => 'required',
-            'kode_pos' => 'required',
             'kelurahan_desa' => 'required',
             'foto' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_akte' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_ktp' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_ijazah_laut' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_mcu' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_sertifikat_bst' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
-            'scan_foto_masa_layar' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
+            'scan_foto_npwp' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
+            'scan_foto_sertifikat' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
+            'scan_foto_ijazah' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080',
             'alamat' => 'required',
-            'nama_ibu_kandung' => 'required',
-            'nama_ayah_kandung' => 'required',
-            'kewarganegaraan' => 'required',
+            'agama' => 'required',
         ], [
             'nama_lengkap.required' => 'Nama Lengkap Wajib Di Isi',
             'nik.required' => 'NIK Wajib Di Isi',
@@ -73,27 +66,19 @@ class PerpanjanganSertifikatGMDSSController extends Controller
             'tempat_lahir.required' => 'Tempat Lahir Wajib Di Isi',
             'no_telp.required' => 'Nomor Telepon Wajib Di Isi',
             'tanggal_lahir.required' => 'Tanggal Lahir Wajib Di Isi',
-            'status.required' => 'Status Wajib Di Isi',
-            'seafare_code.required' => 'Seafare Code Wajib Di Isi',
-            'provinsi.required' => 'provinsi Wajib Di Isi',
+            'no_sertifikat.required' => 'Nomor Sertifikat Wajib Di Isi',
+            'provinsi.required' => 'Provinsi Wajib Di Isi',
             'kabupaten_kota.required' => 'kabupaten_kota Wajib Di Isi',
             'kecamatan.required' => 'Kecamatan Wajib Di Isi',
-            'kode_pos.required' => 'Kode Pos Wajib Di Isi',
             'kelurahan_desa.required' => 'Kelurahan/Desa Wajib Di Isi',
-            'pekerjaan.required' => 'Pekerjaan Wajib Di Isi',
-            'nama_ibu_kandung.required' => 'Nama Ibu Kandung Wajib Di Isi',
-            'nama_ayah_kandung.required' => 'Nama Ayah Kandung Wajib Di Isi',
-            'diklat_asal.required' => 'Diklat Asal Wajib Di Isi',
-            'foto.required' => 'Foto Wajib Diupload',
-            'scan_foto_ktp.required' => 'Scan/Foto KTP Wajib Diupload',
-            'scan_foto_masa_layar.required' => 'Scan/Foto Masa Layar Wajib Diupload',
-            'scan_foto_sertifikat_bst.required' => 'Scan/Foto Sertifikat BST Wajib Diupload',
-            'scan_foto_ijazah_laut.required' => 'Scan/Foto Ijazah Laut Wajib Diupload',
-            'scan_foto_akte.required' => 'Scan/Foto Akte Wajib Diupload',
-            'scan_foto_mcu.required' => 'Scan/Foto MCU Wajib Diupload',
-            'alamat.required' => 'Alamat Wajib Di Isi',
-            'kewarganegaraan.required' => 'Kewarganegaraan Wajib Di Isi',
+            'jenis_sertifikat.required' => 'Jenis Sertifikat Wajib Di Isi',
             'jenis_kelamin.required' => 'Jenis Kelamin Wajib Di Isi',
+            'foto.required' => 'Foto Wajib Diupload',
+            'scan_foto_npwp.required' => 'Scan/Foto NPWP Wajib Diupload',
+            'scan_foto_ijazah.required' => 'Scan/Foto Ijazah Wajib Diupload',
+            'scan_foto_sertifikat.required' => 'Scan/Foto Sertifikat Wajib Diupload',
+            'alamat.required' => 'Alamat Wajib Di Isi',
+            'agama.required' => 'Agama Wajib Di Isi',
         ]);
 
         if ($validasi->fails()) {
@@ -102,37 +87,30 @@ class PerpanjanganSertifikatGMDSSController extends Controller
 
         $data = [
             'nama_lengkap' => $request->nama_lengkap,
-            'diklat_asal' => $request->diklat_asal,
+            'jenis_sertifikat' => $request->jenis_sertifikat,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'email' => $request->email,
-            'status' => $request->status,
+            'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'nik' => $request->nik,
-            'seafare_code' => $request->seafare_code,
-            'pekerjaan' => $request->pekerjaan,
-            'nama_ibu_kandung' => $request->nama_ibu_kandung,
-            'nama_ayah_kandung' => $request->nama_ayah_kandung,
+            'npwp' => $request->npwp,
+            'no_sertifikat' => $request->no_sertifikat,
             'provinsi' => $request->provinsi,
             'kabupaten_kota' => $request->kabupaten_kota,
             'kecamatan' => $request->kecamatan,
             'kelurahan_desa' => $request->kelurahan_desa,
-            'kode_pos' => $request->kode_pos,
             'alamat' => $request->alamat,
-            'kewarganegaraan' => $request->kewarganegaraan,
         ];
 
         // Simpan file foto jika ada
         $this->processImageUpload($request, 'foto', $data);
-        $this->processImageUpload($request, 'scan_foto_ktp', $data);
-        $this->processImageUpload($request, 'scan_foto_akte', $data);
-        $this->processImageUpload($request, 'scan_foto_ijazah_laut', $data);
-        $this->processImageUpload($request, 'scan_foto_mcu', $data);
-        $this->processImageUpload($request, 'scan_foto_masa_layar', $data);
-        $this->processImageUpload($request, 'scan_foto_sertifikat_bst', $data);
+        $this->processImageUpload($request, 'scan_foto_sertifikat', $data);
+        $this->processImageUpload($request, 'scan_foto_npwp', $data);
+        $this->processImageUpload($request, 'scan_foto_ijazah', $data);
 
-        PerpanjanganSertifikatGMDSS::create($data);
+        PerpanjanganSertifikatSOU::create($data);
         return response()->json(['success' => "Berhasil Menyimpan Data"]);
     }
 
@@ -161,7 +139,7 @@ class PerpanjanganSertifikatGMDSSController extends Controller
      */
     public function show(string $id)
     {
-        $data = PerpanjanganSertifikatGMDSS::where('id', $id)->first();
+        $data = PerpanjanganSertifikatSOU::where('id', $id)->first();
         return response()->json(['result'=>$data]);
     }
 
@@ -170,7 +148,7 @@ class PerpanjanganSertifikatGMDSSController extends Controller
      */
     public function edit(string $id)
     {
-        $data = PerpanjanganSertifikatGMDSS::where('id', $id)->first();
+        $data = PerpanjanganSertifikatSOU::where('id', $id)->first();
         return response()->json(['result'=>$data]);
     }
 
@@ -183,7 +161,7 @@ class PerpanjanganSertifikatGMDSSController extends Controller
 
         try {
             // Temukan data berdasarkan ID
-            $model = PerpanjanganSertifikatGMDSS::findOrFail($id);
+            $model = PerpanjanganSertifikatSOU::findOrFail($id);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['errors' => ['Data tidak ditemukan']], 404);
         }
@@ -192,30 +170,24 @@ class PerpanjanganSertifikatGMDSSController extends Controller
         $validasi = Validator::make($request->all(), [
             'nama_lengkap' => 'required',
             'email' => 'required',
-            'diklat_asal' => 'required',
-            'status' => 'required',
-            'seafare_code' => 'required',
+            'jenis_sertifikat' => 'required',
+            'no_sertifikat' => 'required',
             'no_telp' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'nik' => 'required',
+            'npwp' => 'required',
             'jenis_kelamin' => 'required',
             'provinsi' => 'required',
             'kabupaten_kota' => 'required',
             'kecamatan' => 'required',
-            'kode_pos' => 'required',
             'kelurahan_desa' => 'required',
             'foto' => $request->hasFile('foto') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_ktp' => $request->hasFile('scan_foto_ktp') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_mcu' => $request->hasFile('scan_foto_mcu') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_sertifikat_bst' => $request->hasFile('scan_foto_sertifikat_bst') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_masa_layar' => $request->hasFile('scan_foto_masa_layar') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_akte' => $request->hasFile('scan_foto_akte') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
-            'scan_foto_ijazah_laut' => $request->hasFile('scan_foto_ijazah_laut') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
+            'scan_foto_npwp' => $request->hasFile('scan_foto_npwp') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
+            'scan_foto_ijazah' => $request->hasFile('scan_foto_ijazah') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
+            'scan_foto_sertifikat' => $request->hasFile('scan_foto_sertifikat') ? 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:7080' : '',
             'alamat' => 'required',
-            'nama_ibu_kandung' => 'required',
-            'nama_ayah_kandung' => 'required',
-            'kewarganegaraan' => 'required',
+            'agama' => 'required',
         ], [
             'nama_lengkap.required' => 'Nama Lengkap Wajib Di Isi',
             'nik.required' => 'NIK Wajib Di Isi',
@@ -225,26 +197,18 @@ class PerpanjanganSertifikatGMDSSController extends Controller
             'tempat_lahir.required' => 'Tempat Lahir Wajib Di Isi',
             'no_telp.required' => 'Nomor Telepon Wajib Di Isi',
             'tanggal_lahir.required' => 'Tanggal Lahir Wajib Di Isi',
-            'status.required' => 'Status Wajib Di Isi',
-            'seafare_code.required' => 'Seafare Code Wajib Di Isi',
+            'no_sertifikat.required' => 'Nomor Sertifikat Wajib Di Isi',
             'provinsi.required' => 'provinsi Wajib Di Isi',
             'kabupaten_kota.required' => 'kabupaten_kota Wajib Di Isi',
             'kecamatan.required' => 'Kecamatan Wajib Di Isi',
-            'kode_pos.required' => 'Kode Pos Wajib Di Isi',
             'kelurahan_desa.required' => 'Kelurahan/Desa Wajib Di Isi',
-            'pekerjaan.required' => 'Pekerjaan Wajib Di Isi',
-            'nama_ibu_kandung.required' => 'Nama Ibu Kandung Wajib Di Isi',
-            'nama_ayah_kandung.required' => 'Nama Ayah Kandung Wajib Di Isi',
-            'diklat_asal.required' => 'Diklat Asal Wajib Di Isi',
+            'jenis_sertifikat.required' => 'Jenis Sertifikat Wajib Di Isi',
             'foto.required' => 'Foto Wajib Diupload',
-            'scan_foto_ktp.required' => 'Scan/Foto KTP Wajib Diupload',
-            'scan_foto_masa_layar.required' => 'Scan/Foto Masa Layar Wajib Diupload',
-            'scan_foto_sertifikat_bst.required' => 'Scan/Foto Sertifikat BST Wajib Diupload',
-            'scan_foto_ijazah_laut.required' => 'Scan/Foto Ijazah Laut Wajib Diupload',
-            'scan_foto_akte.required' => 'Scan/Foto Akte Wajib Diupload',
-            'scan_foto_mcu.required' => 'Scan/Foto MCU Wajib Diupload',
+            'scan_foto_npwp.required' => 'Scan/Foto NPWP Wajib Diupload',
+            'scan_foto_sertifikat.required' => 'Scan/Foto Sertifikat Wajib Diupload',
+            'scan_foto_ijazah.required' => 'Scan/Foto Ijazah Wajib Diupload',
             'alamat.required' => 'Alamat Wajib Di Isi',
-            'kewarganegaraan.required' => 'Kewarganegaraan Wajib Di Isi',
+            'agama.required' => 'Agama Wajib Di Isi',
         ]);
 
         if ($validasi->fails()) {
@@ -255,43 +219,33 @@ class PerpanjanganSertifikatGMDSSController extends Controller
         $data = [];
         // Simpan file foto jika ada
         $this->processImageUpload($request, 'foto', $data, $model);
-        $this->processImageUpload($request, 'scan_foto_ktp', $data, $model);
-        $this->processImageUpload($request, 'scan_foto_akte', $data, $model);
+        $this->processImageUpload($request, 'scan_foto_npwp', $data, $model);
         $this->processImageUpload($request, 'scan_foto_ijazah_laut', $data, $model);
-        $this->processImageUpload($request, 'scan_foto_mcu', $data, $model);
-        $this->processImageUpload($request, 'scan_foto_masa_layar', $data, $model);
-        $this->processImageUpload($request, 'scan_foto_sertifikat_bst', $data, $model);
+        $this->processImageUpload($request, 'scan_foto_sertifikat', $data, $model);
 
 
         // Update data
         $model->update([
             'nama_lengkap' => $request->nama_lengkap,
-            'diklat_asal' => $request->diklat_asal,
+            'jenis_sertifikat' => $request->jenis_sertifikat,
             'no_telp' => $request->no_telp,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'email' => $request->email,
-            'status' => $request->status,
+            'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'nik' => $request->nik,
-            'seafare_code' => $request->seafare_code,
-            'pekerjaan' => $request->pekerjaan,
-            'nama_ibu_kandung' => $request->nama_ibu_kandung,
-            'nama_ayah_kandung' => $request->nama_ayah_kandung,
+            'npwp' => $request->npwp,
+            'no_sertifikat' => $request->no_sertifikat,
             'provinsi' => $request->provinsi,
             'kabupaten_kota' => $request->kabupaten_kota,
             'kecamatan' => $request->kecamatan,
             'kelurahan_desa' => $request->kelurahan_desa,
-            'kode_pos' => $request->kode_pos,
             'alamat' => $request->alamat,
-            'kewarganegaraan' => $request->kewarganegaraan,
             'foto' => $data['foto'] ?? $model->foto, // Pastikan atribut sesuai dengan kolom di tabel
-            'scan_foto_ktp' => $data['scan_foto_ktp'] ?? $model->scan_foto_ktp,
-            'scan_foto_akte' => $data['scan_foto_akte'] ?? $model->scan_foto_akte,
-            'scan_foto_ijazah_laut' => $data['scan_foto_ijazah_laut'] ?? $model->scan_foto_ijazah_laut,
-            'scan_foto_mcu' => $data['scan_foto_mcu'] ?? $model->scan_foto_mcu,
-            'scan_foto_masa_layar' => $data['scan_foto_masa_layar'] ?? $model->scan_foto_masa_layar,
-            'scan_foto_sertifikat_bst' => $data['scan_foto_sertifikat_bst'] ?? $model->scan_foto_sertifikat_bst,
+            'scan_foto_ijazah' => $data['scan_foto_ijazah'] ?? $model->scan_foto_ijazah,
+            'scan_foto_npwp' => $data['scan_foto_npwp'] ?? $model->scan_foto_npwp,
+            'scan_foto_sertifikat' => $data['scan_foto_sertifikat'] ?? $model->scan_foto_sertifikat,
             ]);
 
         return response()->json(['success' => 'Berhasil Melakukan Update Data']);
@@ -303,7 +257,7 @@ class PerpanjanganSertifikatGMDSSController extends Controller
     public function destroy(string $id)
     {
         try {
-            $data = PerpanjanganSertifikatGMDSS::findOrFail($id);
+            $data = PerpanjanganSertifikatSOU::findOrFail($id);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Data tidak ditemukan.'], 404);
         }
@@ -319,7 +273,7 @@ class PerpanjanganSertifikatGMDSSController extends Controller
 
     private function deleteRelatedFiles($data)
     {
-        $fileFields = ['foto', 'scan_foto_ktp', 'scan_foto_akte', 'scan_foto_ijazah_laut','scan_foto_sertifikat_bst','scan_foto_mcu','scan_foto_masa_layar'];
+        $fileFields = ['foto', 'scan_foto_npwp','scan_foto_ijazah','scan_foto_sertifikat'];
 
         foreach ($fileFields as $fieldName) {
             if ($data->$fieldName) {

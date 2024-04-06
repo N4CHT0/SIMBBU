@@ -5,35 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-class DiklatMEFA extends Model
+class PerpanjanganSertifikatSOU extends Model
 {
     use HasFactory;
-    protected $table = 'diklat_m_e_f_a';
+    protected $table = 'perpanjangan_sertifikat_s_o_u';
     protected $primarykey = "id";
     protected $keyType = 'string';
     public $incrementing = false;
     protected $fillable = [
         'id',
-        'seafare_code',
+        'no_sertifikat',
+        'nik',
+        'npwp',
         'nama_lengkap',
-        'jenis_kelamin',
-        'jenis_sertifikat_cop',
-        'agama',
-        'pekerjaan',
         'tempat_lahir',
         'tanggal_lahir',
-        'no_telp',
         'alamat',
+        'agama',
+        'no_telp',
         'provinsi',
         'kabupaten_kota',
         'kecamatan',
         'kelurahan_desa',
-        'rt_rw',
-        'kode_pos',
-        'status',
-        'nama_ibu',
-        'nama_ayah',
+        'jenis_kelamin',
+        'jenis_sertifikat',
         'foto',
+        'scan_foto_ijazah',
+        'scan_foto_npwp',
+        'scan_foto_sertifikat',
         'email',
     ];
     protected static function boot()

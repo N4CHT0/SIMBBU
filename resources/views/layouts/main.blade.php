@@ -12,8 +12,8 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('LTE/dist/img/AdminLTELogo.png') }}"
-                alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('LTE/dist/img/LOGO_SIM.jpg') }}"
+                alt="SIMBBULogo" height="180" width="180">
         </div>
         <!-- Navbar -->
         @include('layouts.navbar')

@@ -11,9 +11,8 @@ data-sidebar-position="fixed" data-header-position="fixed">
             <div class="card mb-0">
                 <div class="card-body">
                     <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                        <img src="{{ asset('AUTH/images/logos/dark-logo.svg')}}" width="180" alt=""> <!-- LOGO -->
+                        <img src="{{ asset('LTE/dist/img/LOGO_SIM-removebg-preview.png')}}" width="120" alt=""> <!-- LOGO -->
                     </a>
-                    <p class="text-center">Your Social Campaigns</p>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="mb-3">
@@ -61,6 +60,9 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                 <option value="pegawai">Pegawai</option>
                                 <option value="pengajar">Pengajar</option>
                                 <option value="peserta">Peserta</option>
+                                <option value="pesertaujian">Peserta Ujian</option>
+                                <option value="keuangan">Peserta</option>
+                                <option value="inventory">Inventory</option>
                             </select>
                         </div>
 

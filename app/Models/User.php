@@ -17,11 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     public function hasRole($role)
     {
         return $this->role === $role;
     }
     protected $fillable = [
+        'id',
         'username',
         'email',
         'password',
@@ -45,8 +48,19 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    protected $keyType = 'string';
     protected $casts = [
+        'id' => 'string',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = (string) Str::uuid();
+        });
+    }
 }

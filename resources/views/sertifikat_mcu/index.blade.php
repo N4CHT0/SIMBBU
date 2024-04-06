@@ -4,30 +4,27 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Data Keuangan Peserta</h3>
+            <h3 class="card-title">Data Sertifikat MCU</h3>
         </div>
 
         <div class="card-body">
             <div class="btn-group mb-3 justify-content-between">
                 <a href="#" class="btn btn-danger d-flex align-items-center">
-                    Export Data Keuangan Peserta
+                    Export Data Sertifikat MCU
                 </a>
 
                 <button type="button" class="btn btn-success ms-2 d-flex align-items-center tombol-tambah">
-                    Tambah Data Keuangan Peserta
+                    Tambah Data Sertifikat MCU
                 </button>
             </div>
             <br>
             <br>
-            <div class="table-responsive"></div>
-            <table id="Keuangan" class="table table-bordered table-hover dt-responsive display nowrap">
+            <table id="SertifikatMCU" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Jenis Diklat</th>
-                        <th>Status Pembayaran</th>
-                        <th>Bukti Pembayaran</th>
-                        <th>Waktu</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jabatan Diatas Kapal</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,11 +34,11 @@
 </div>
 
 <!-- Modal Tambah & Edit/Update -->
-<div class="modal fade" id="ModalKeuangan" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalSertifikatMCU" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel">Data Keuangan Peserta</h5>
+                <h5 class="modal-title" id="ModalLabel">Data Perpanjangan Sertifikat REOR</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -53,32 +50,31 @@
                 <!-- Sesuaikan dengan kolom-kolom yang ingin ditambahkan -->
 
                 <div class="form-group">
-                    <label for="status_pembayaran">Status Pembayaran</label>
-                    <input type="text" class="form-control" id="status_pembayaran" name="status_pembayaran" required>
+                    <label for="jabatan_diatas_kapal">Jabatan Diatas Kapal</label>
+                    <input type="text" class="form-control" id="jabatan_diatas_kapal" name="jabatan_diatas_kapal" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="bukti_pembayaran">Upload Bukti Pembayaran</label>
-                    <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran" accept="image/*" required>
+                    <label for="nama_lengkap">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" autocomplete="name"
+                        required>
                 </div>
 
                 <div class="form-group">
-                    <label for="jenis_diklat">Jenis Diklat</label>
-                    <select class="form-control" id="jenis_diklat" name="jenis_diklat" required>
-                        <!-- Pilihan role sesuai dengan kebutuhan -->
-                        <option value="sou-r">SOU-R</option>
-                        <option value="sou-m">SOU-M</option>
-                        <option value="gmdss">GMDSS</option>
-                        <option value="sso">SSO</option>
-                        <option value="mfa">MFA</option>
-                        <option value="mc">MC</option>
-                        <option value="sat">SAT</option>
-                        <option value="satsdsd">SATSDSD</option>
-                        <option value="sre-1">SRE-I</option>
-                        <option value="sre-2">SRE-II</option>
-                        <!-- Tambahkan pilihan lain jika diperlukan -->
-                    </select>
+                    <label for="foto">Upload Foto</label>
+                    <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
                 </div>
+
+                <div class="form-group">
+                    <label for="foto_ktp">Upload Foto KTP </label>
+                    <input type="file" class="form-control" id="foto_ktp" name="foto_ktp" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="foto_bst">Upload Foto BST</label>
+                    <input type="file" class="form-control" id="foto_bst" name="foto_bst" accept="image/*" required>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary tombol-simpan">Simpan</button>
@@ -93,7 +89,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="DetailLabel">Data Perpanjangan Sertifikat SOU</h5>
+                <h5 class="modal-title" id="DetailLabel">Data Sertifikat MCU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,19 +102,33 @@
                 <!-- Sesuaikan dengan kolom-kolom yang ingin ditambahkan -->
 
                 <div class="form-group">
-                    <label for="jenis_diklat">Jenis Diklat : </label>
-                    <span class="detail-value" id="jenis_diklat_detail"></span>
+                    <label for="nama_lengkap">Nama Lengkap : </label>
+                    <span class="detail-value" id="nama_lengkap_detail"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="status_pembayaran">Status Pembayaran : </label>
-                    <span class="detail-value" id="status_pembayaran_detail"></span>
+                    <label for="jabatan_diatas_kapal">Jabatan Diatas Kapal : </label>
+                    <span class="detail-value" id="jabatan_diatas_kapal_detail"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="bukti_pembayaran">Bukti Pembayaran : </label>
+                    <label for="foto">Foto : </label>
                     <br>
-                    <img class="detail-value" id="bukti_pembayaran_detail" src="{{ asset('') }}" alt="Foto"
+                    <img class="detail-value" id="foto_detail" src="{{ asset('') }}" alt="Foto"
+                        style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
+                </div>
+
+                <div class="form-group">
+                    <label for="foto_ktp">Foto KTP : </label>
+                    <br>
+                    <img class="detail-value" id="foto_ktp_detail" src="{{ asset('') }}" alt="Foto"
+                        style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
+                </div>
+
+                <div class="form-group">
+                    <label for="foto_bst">Foto BST : </label>
+                    <br>
+                    <img class="detail-value" id="foto_bst_detail" src="{{ asset('') }}" alt="Foto"
                         style="max-width: 300px;"> <!-- Hapus penggunaan result.foto -->
                 </div>
                 <!-- ... -->
@@ -137,8 +147,8 @@
     // Skrip JavaScript
     // ...
     $(function () {
-        $('#Keuangan').DataTable({
-            "ajax": "{{ url('KeuanganAjax') }}",
+        $('#SertifikatMCU').DataTable({
+            "ajax": "{{ url('SertifikatMCUAjax') }}",
             "columns": [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -146,20 +156,12 @@
                     searchable: false
                 },
                 {
-                    data: 'jenis_diklat',
-                    name: 'jenis_diklat'
+                    data: 'nama_lengkap',
+                    name: 'nama_lengkap'
                 },
                 {
-                    data: 'status_pembayaran',
-                    name: 'status_pembayaran'
-                },
-                {
-                    data: 'bukti_pembayaran',
-                    name: 'bukti_pembayaran'
-                },
-                {
-                    data: 'updated_at',
-                    name: 'updated_at'
+                    data: 'jabatan_diatas_kapal',
+                    name: 'jabatan_diatas_kapal'
                 },
                 {
                     data: 'action',
@@ -191,22 +193,44 @@
         var id = $(this).data('id');
 
         $.ajax({
-            url: 'KeuanganAjax/' + id,
+            url: 'SertifikatMCUAjax/' + id,
             type: 'GET',
             success: function (response) {
                 var result = response.result;
-                $('.detail-value#jenis_diklat_detail').text(result.jenis_diklat);
-                $('.detail-value#status_pembayaran_detail').text(result.status_pembayaran);
+                $('.detail-value#nama_lengkap_detail').text(result.nama_lengkap);
+                $('.detail-value#jabatan_diatas_kapal_detail').text(result.jabatan_diatas_kapal);
 
-                if (result.bukti_pembayaran && result.bukti_pembayaran !== null) {
+                if (result.foto && result.foto !== null) {
                     // Pastikan ada foto sebelum mencoba menetapkan src
-                    $('.detail-value#bukti_pembayaran_detail').attr('src',
-                        '{{ asset("storage/img/") }}/' + result.bukti_pembayaran);
+                    $('.detail-value#foto_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.foto);
                 } else {
                     // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
                     // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
                     // Atau sembunyikan elemen gambar sepenuhnya
-                    $('.detail-value#bukti_pembayaran_detail').hide();
+                    $('.detail-value#foto_detail').hide();
+                }
+
+                if (result.foto_ktp && result.foto_ktp !== null) {
+                    // Pastikan ada foto sebelum mencoba menetapkan src
+                    $('.detail-value#foto_ktp_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.foto_ktp);
+                } else {
+                    // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
+                    // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
+                    // Atau sembunyikan elemen gambar sepenuhnya
+                    $('.detail-value#foto_ktp_detail').hide();
+                }
+
+                if (result.foto_bst && result.foto_bst !== null) {
+                    // Pastikan ada foto sebelum mencoba menetapkan src
+                    $('.detail-value#foto_bst_detail').attr('src',
+                        '{{ asset("storage/img/") }}/' + result.foto_bst);
+                } else {
+                    // Misalnya, jika tidak ada foto, tampilkan placeholder atau pesan alternatif
+                    // $('.detail-value#foto_detail').attr('src', '{{ asset("placeholder.jpg") }}');
+                    // Atau sembunyikan elemen gambar sepenuhnya
+                    $('.detail-value#foto_bst_detail').hide();
                 }
 
                 console.log(result);
@@ -221,7 +245,7 @@
     /* Proses Tambah */
     $('body').on('click', '.tombol-tambah', function (e) {
         e.preventDefault();
-        $('#ModalKeuangan').modal('show');
+        $('#ModalSertifikatMCU').modal('show');
         $('.tombol-simpan').on('click', function () {
             simpan();
         });
@@ -231,13 +255,15 @@
     $('body').on('click', '.tombol-edit', function (e) {
         var id = $(this).data('id');
         $.ajax({
-            url: 'KeuanganAjax/' + id + '/edit',
+            url: 'SertifikatMCUAjax/' + id + '/edit',
             type: 'GET',
             success: function (response) {
-                $('#ModalKeuangan').modal('show');
-                $('#jenis_diklat').val(response.result.jenis_diklat);
-                $('#status_pembayaran').val(response.result.status_pembayaran);
-                $('#bukti_pembayaran').val('');
+                $('#ModalSertifikatMCU').modal('show');
+                $('#nama_lengkap').val(response.result.nama_lengkap);
+                $('#jabatan_diatas_kapal').val(response.result.jabatan_diatas_kapal);
+                $('#foto').val('');
+                $('#foto_ktp').val('');
+                $('#foto_bst').val('');
                 console.log(response.result);
                 $('.tombol-simpan').click(function () {
                     simpan(id);
@@ -251,11 +277,11 @@
         if (confirm('Yakin Ingin Menghapus Data Ini?')) {
             var id = $(this).data('id');
             $.ajax({
-                url: 'KeuanganAjax/' + id,
+                url: 'SertifikatMCUAjax/' + id,
                 type: 'DELETE',
                 success: function (response) {
                     console.log(response);
-                    $('#Keuangan').DataTable().ajax.reload();
+                    $('#SertifikatMCU').DataTable().ajax.reload();
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
@@ -264,16 +290,40 @@
         }
     });
 
+    function validateForm() {
+        // Implementasikan logika validasi sesuai kebutuhan
+        // Contoh sederhana, periksa apakah email telah diisi
+        var nama = $('#nama_lengkap').val();
+        if (!nama) {
+            alert('Nama Lengkap harus diisi');
+            return false;
+        }
+
+        // Contoh validasi lainnya...
+
+        return true; // Kembalikan true jika semua validasi berhasil
+    }
+
     /* Fungsi Simpan & Update */
     function simpan(id = '') {
         // Mendapatkan data dari elemen HTML
         var data = new FormData();
-        data.append('jenis_diklat', $('#jenis_diklat').val());
-        data.append('status_pembayaran', $('#status_pembayaran').val());
+        data.append('nama_lengkap', $('#nama_lengkap').val());
+        data.append('jabatan_diatas_kapal', $('#jabatan_diatas_kapal').val());
 
-        var buktiPembayaranInput = $('#bukti_pembayaran')[0];
-        if (buktiPembayaranInput.files.length > 0) {
-            data.append('bukti_pembayaran', buktiPembayaranInput.files[0]);
+        var fotoInput = $('#foto')[0];
+        if (fotoInput.files.length > 0) {
+            data.append('foto', fotoInput.files[0]);
+        }
+
+        var ktpInput = $('#foto_ktp')[0];
+        if (ktpInput.files.length > 0) {
+            data.append('foto_ktp', ktpInput.files[0]);
+        }
+
+        var bstInput = $('#foto_bst')[0];
+        if (bstInput.files.length > 0) {
+            data.append('foto_bst', bstInput.files[0]);
         }
 
         // Tambahkan atribut _method untuk permintaan PUT (update)
@@ -286,9 +336,16 @@
             var methodType = 'POST';
         }
 
+        // Lakukan validasi frontend
+        var isValid = validateForm(); // Implementasikan fungsi ini untuk memeriksa validasi
+
+        if (!isValid) {
+            return; // Hentikan proses jika validasi gagal
+        }
+
         // Kirim permintaan
         $.ajax({
-            url: id === '' ? 'KeuanganAjax' : 'KeuanganAjax/' + id,
+            url: id === '' ? 'SertifikatMCUAjax' : 'SertifikatMCUAjax/' + id,
             type: methodType,
             data: data,
             contentType: false,
@@ -306,7 +363,7 @@
                     $('.alert-success').removeClass('d-none');
                     $('.alert-success').html(response.success);
                 }
-                $('#Keuangan').DataTable().ajax.reload();
+                $('#SertifikatMCU').DataTable().ajax.reload();
             },
             error: function (xhr, textStatus, errorThrown) {
                 if (xhr.status === 422) {
@@ -324,11 +381,13 @@
 
 
 
-    $('#ModalKeuangan').on('hidden.bs.modal', function () {
-        var inputFoto = $('#bukti_pembayaran');
+    $('#ModalSertifikatMCU').on('hidden.bs.modal', function () {
+        var inputFoto = $('#foto');
+        var InputBST = $('#foto_bst');
+        var InputKTP = $('#foto_ktp');
         inputFoto.replaceWith(inputFoto.val('').clone(true));
-        $('#jenis_diklat').val('');
-        $('#status_pembayaran').val('');
+        $('#nama_lengkap').val('');
+        $('#jabatan_diatas_kapal').val('');
         $('.alert-danger').addClass('d-none');
         $('.alert-danger').html('');
         $('.alert-success').addClass('d-none');

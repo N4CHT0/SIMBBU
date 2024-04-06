@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiklatMCController;
-use App\Http\Controllers\DiklatMEFAController;
+use App\Http\Controllers\DiklatMFAController;
 use App\Http\Controllers\DiklatSATController;
 use App\Http\Controllers\DiklatSATSDSDController;
 use App\Http\Controllers\DiklatSOUMController;
@@ -9,7 +9,13 @@ use App\Http\Controllers\DiklatSOURController;
 use App\Http\Controllers\DiklatSRE1Controller;
 use App\Http\Controllers\DiklatSRE2Controller;
 use App\Http\Controllers\DiklatSSOController;
+use App\Http\Controllers\InventorySertifikatController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\NilaiUjianLokalController;
+use App\Http\Controllers\PerpanjanganSertifikatGMDSSController;
+use App\Http\Controllers\PerpanjanganSertifikatSOUController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\SertifikatMCUController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DiklatGMDSSController;
@@ -34,6 +40,8 @@ Route::get('/', function () {
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+Auth::routes();
+
 Route::get('/home/admin', [AdminController::class, 'showTotalPegawai'])
     ->name('admin.home')
     ->middleware(['auth', 'role:admin']);
@@ -44,6 +52,7 @@ Route::get('/users', function () {
 })->name('auth.index')->middleware(['auth', 'role:admin']);
 Route::resource('UsersAjax', AdminController::class)
     ->middleware(['auth', 'role:admin']);
+
 /*
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +62,18 @@ Route::resource('UsersAjax', AdminController::class)
 Route::get('/home', [PesertaController::class, 'index'])
     ->name('peserta.home')
     ->middleware(['auth', 'role:peserta']);
+
+/*
+/*
+|--------------------------------------------------------------------------
+| Nilai Ujian Lokal Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/nilai_ujian_lokal', function () {
+    return view('nilai_ujian_lokal.index');
+})->name('nilai_ujian_lokal.index');
+Route::resource('NilaiUjianLokalAjax', NilaiUjianLokalController::class);
+
 /*
 |--------------------------------------------------------------------------
 | Pegawai Routes
@@ -62,6 +83,46 @@ Route::get('/pegawai', function () {
     return view('pegawai.index');
 })->name('pegawai.index');
 Route::resource('PegawaiAjax', PegawaiController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Sertifikat MCU Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/sertifikat_mcu', function () {
+    return view('sertifikat_mcu.index');
+})->name('sertifikat_mcu.index');
+Route::resource('SertifikatMCUAjax', SertifikatMCUController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Perpanjangan Sertifikat GMDSS Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/perpanjangan_sertifikat_gmdss', function () {
+    return view('perpanjangan_sertifikat_gmdss.index');
+})->name('perpanjangan_sertifikat_gmdss.index');
+Route::resource('PerpanjanganSertifikatGMDSSAjax', PerpanjanganSertifikatGMDSSController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Perpanjangan Sertifikat SOU Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/perpanjangan_sertifikat_sou', function () {
+    return view('perpanjangan_sertifikat_sou.index');
+})->name('perpanjangan_sertifikat_sou.index');
+Route::resource('PerpanjanganSertifikatSOUAjax', PerpanjanganSertifikatSOUController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Inventory Sertifikat Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/inventory_sertifikat', function () {
+    return view('inventory_sertifikat.index');
+})->name('inventory_sertifikat.index');
+Route::resource('InventorySertifikatAjax', InventorySertifikatController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -85,13 +146,13 @@ Route::resource('DiklatMCAjax', DiklatMCController::class);
 
 /*
 |--------------------------------------------------------------------------
-| DIKLAT MEFA Routes
+| DIKLAT MFA Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/diklat_mefa', function () {
-    return view('diklat_mefa.index');
-})->name('diklat_mefa.index');
-Route::resource('DiklatMEFAAjax', DiklatMEFAController::class);
+Route::get('/diklat_mfa', function () {
+    return view('diklat_mfa.index');
+})->name('diklat_mfa.index');
+Route::resource('DiklatMFAAjax', DiklatMFAController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -163,4 +224,22 @@ Route::get('/diklat_sre2', function () {
 })->name('diklat_sre2.index');
 Route::resource('DiklatSRE2Ajax', DiklatSRE2Controller::class);
 
-Auth::routes();
+/*
+|--------------------------------------------------------------------------
+| Nilai Ujian Lokal Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/nilai_ujian_lokal', function () {
+    return view('nilai_ujian_lokal.index');
+})->name('nilai_ujian_lokal.index');
+Route::resource('NilaiUjianLokalAjax', NilaiUjianLokalController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Keuangan Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/keuangan', function () {
+    return view('keuangan.index');
+})->name('keuangan.index');
+Route::resource('KeuanganAjax', KeuanganController::class);

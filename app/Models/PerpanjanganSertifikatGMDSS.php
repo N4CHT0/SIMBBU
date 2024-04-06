@@ -25,6 +25,7 @@ class PerpanjanganSertifikatGMDSS extends Model
         'no_telp',
         'provinsi',
         'kabupaten_kota',
+        'pekerjaan',
         'kecamatan',
         'kelurahan_desa',
         'kode_pos',
@@ -40,7 +41,6 @@ class PerpanjanganSertifikatGMDSS extends Model
         'scan_foto_ktp',
         'scan_foto_akte',
         'email',
-        'id_pengajar',
     ];
     protected static function boot()
     {
