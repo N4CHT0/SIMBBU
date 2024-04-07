@@ -54,7 +54,7 @@ class DiklatSATController extends Controller
             'rt_rw' => 'required',
             'kode_pos' => 'required',
             'pekerjaan' => 'required',
-            'foto' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:4048',
+            'foto' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
             'alamat' => 'required',
             'nama_ibu' => 'required',
             'nama_ayah' => 'required',

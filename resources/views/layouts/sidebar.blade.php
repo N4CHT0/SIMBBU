@@ -261,7 +261,7 @@
                         </li>
                         <li class="nav-header">PEGAWAI</li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('keuangan.index') }}" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Keuangan</p>
                             </a>
@@ -566,7 +566,7 @@
                         </li>
                         <li class="nav-header">PEGAWAI</li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Keuangan</p>
                             </a>
